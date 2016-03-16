@@ -7,25 +7,30 @@ import           Control.Applicative
 import           Language.Haskell.Exts.Annotated     as Hse
 import qualified Language.Haskell.HLint3             as HLint3
 
+data Settings = Settings ParseMode [HLint3.Classify] HLint3.Hint
+
 formatter = undefined
 
-suggester :: (ParseMode, [HLint3.Classify], HLint3.Hint) -> Formatter
+suggester :: Settings -> Formatter
 suggester = mkSuggester . hlint
 
-hlint :: (ParseMode, [HLint3.Classify], HLint3.Hint) -> HaskellSource -> Either String [Suggestion]
-hlint (parseMode, classifications, hint) (HaskellSource source) =
+hlint :: Settings -> HaskellSource -> Either String [Suggestion]
+hlint (Settings parseMode classifications hint) (HaskellSource source) =
   getSuggestions <$> parseResultAsEither (parse source)
   where
     parse = Hse.parseFileContentsWithComments parseMode
     getSuggestions moduleSource = map ideaToSuggestion $ HLint3.applyHints classifications hint
                                                            [moduleSource]
 
-autoSettings :: IO (ParseMode, [HLint3.Classify], HLint3.Hint)
+autoSettings :: IO Settings
 autoSettings = do
-  (fixities, classify, hints) <- HLint3.findSettings (HLint3.readSettingsFile Nothing) Nothing
+  (fixities, classifications, hints) <- HLint3.findSettings (HLint3.readSettingsFile Nothing)
+                                          Nothing
   return
-    (HLint3.hseFlags (HLint3.parseFlagsAddFixities fixities HLint3.defaultParseFlags), classify, HLint3.resolveHints
-                                                                                                   hints)
+    (Settings
+       (HLint3.hseFlags (HLint3.parseFlagsAddFixities fixities HLint3.defaultParseFlags))
+       classifications
+       (HLint3.resolveHints hints))
 
 parseResultAsEither :: ParseResult a -> Either String a
 parseResultAsEither (ParseOk a) = Right a
