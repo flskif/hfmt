@@ -22,9 +22,9 @@ library
                      , Language.Haskell.Source.Enumerator
   Other-Modules:     Language.Haskell.Format.Internal
                      , Language.Haskell.Format.Definitions
-                     , Language.Haskell.Format.HIndent
-                     , Language.Haskell.Format.HLint
-                     , Language.Haskell.Format.Stylish
+                     , Language.Haskell.Format.Tool.HIndent
+                     , Language.Haskell.Format.Tool.HLint
+                     , Language.Haskell.Format.Tool.Stylish
   GHC-Options:       -Wall
   Build-Depends:     base >= 4.8 && < 5
                      , Cabal

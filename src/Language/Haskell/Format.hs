@@ -13,9 +13,9 @@ module Language.Haskell.Format (
     ) where
 
 import           Language.Haskell.Format.Definitions
-import qualified Language.Haskell.Format.HIndent     as HIndent
-import qualified Language.Haskell.Format.HLint       as HLint
-import qualified Language.Haskell.Format.Stylish     as Stylish
+import qualified Language.Haskell.Format.Tool.HIndent as HIndent
+import qualified Language.Haskell.Format.Tool.HLint   as HLint
+import qualified Language.Haskell.Format.Tool.Stylish as Stylish
 
 import           Control.Applicative
 import           Data.Maybe

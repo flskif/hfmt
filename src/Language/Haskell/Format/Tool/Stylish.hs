@@ -1,4 +1,4 @@
-module Language.Haskell.Format.Stylish (autoSettings, formatter) where
+module Language.Haskell.Format.Tool.Stylish (autoSettings, formatter) where
 
 import Control.Applicative
 import Language.Haskell.Stylish            as Stylish

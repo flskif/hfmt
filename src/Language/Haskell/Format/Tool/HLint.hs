@@ -1,4 +1,4 @@
-module Language.Haskell.Format.HLint (autoSettings, formatter, suggester) where
+module Language.Haskell.Format.Tool.HLint (autoSettings, formatter, suggester) where
 
 import           Language.Haskell.Format.Definitions
 import           Language.Haskell.Format.Internal

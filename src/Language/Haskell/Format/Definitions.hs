@@ -18,8 +18,8 @@ data Reformatted = Reformatted { reformattedSource :: HaskellSource, suggestions
 
 instance Monoid Reformatted where
   mempty = Reformatted undefined []
-  (Reformatted _ suggestionsA) `mappend` (Reformatted sourceB suggestionsB) = Reformatted sourceB
-                                                                                (suggestionsA <> suggestionsB)
+  (Reformatted _ suggestionsA) `mappend` (Reformatted source suggestionsB) = Reformatted source
+                                                                               (suggestionsA <> suggestionsB)
 
 data Formatter = Formatter { unFormatter :: HaskellSource -> Either ErrorString Reformatted }
 

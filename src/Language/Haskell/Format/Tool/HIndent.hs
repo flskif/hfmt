@@ -1,4 +1,4 @@
-module Language.Haskell.Format.HIndent (autoSettings, formatter, defaultFormatter) where
+module Language.Haskell.Format.Tool.HIndent (autoSettings, formatter, defaultFormatter) where
 
 import Control.Applicative
 import Data.Maybe
