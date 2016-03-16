@@ -42,8 +42,8 @@ executable hfmt
   Hs-Source-Dirs:    app
   Main-Is:           Main.hs
   Other-Modules:     Actions
+                   , Definitions
                    , OptionsParser
-                   , Types
   GHC-Options:       -Wall
   Build-Depends:     base == 4.*
                    , hfmt

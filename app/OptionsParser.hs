@@ -1,6 +1,6 @@
 module OptionsParser (Options, optAction, optPaths, parser) where
 
-import Types
+import Definitions
 
 import Control.Applicative
 import Data.List

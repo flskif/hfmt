@@ -1,11 +1,11 @@
 module Main (main) where
 
 import           Actions
+import           Definitions
 import           Language.Haskell.Format
 import           Language.Haskell.Format.Utilities  hiding (wasReformatted)
 import           Language.Haskell.Source.Enumerator
 import           OptionsParser                      as Options
-import           Types
 
 import           Control.Applicative
 import           Control.Monad

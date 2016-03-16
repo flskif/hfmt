@@ -1,4 +1,4 @@
-module Types (
+module Definitions (
     Action(..),
     InputFile(..),
     InputFileWithSource(..),

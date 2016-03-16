@@ -1,8 +1,8 @@
 module Actions (act) where
 
+import Definitions
 import Language.Haskell.Format
 import OptionsParser
-import Types
 
 import Control.Monad
 import Data.Algorithm.Diff
