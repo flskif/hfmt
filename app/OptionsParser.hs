@@ -10,15 +10,6 @@ import Options.Applicative.Common
 import Options.Applicative.Extra
 import Text.PrettyPrint.ANSI.Leijen hiding (empty, (<$>), (<>))
 
-data Options =
-       Options
-         { optPrintDiffs     :: Bool
-         , optPrintSources   :: Bool
-         , optPrintFilePaths :: Bool
-         , optWriteSources   :: Bool
-         , optPaths          :: [FilePath]
-         }
-
 optAction :: Options -> Action
 optAction options
   | optPrintDiffs options = PrintDiffs

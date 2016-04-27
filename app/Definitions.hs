@@ -6,6 +6,7 @@ module Definitions (
     ReformatResult(..),
     HaskellSourceFilePath,
     HaskellSource(..),
+    Options(..),
     ) where
 
 import Language.Haskell.Format
@@ -15,6 +16,15 @@ data Action = PrintDiffs
             | PrintSources
             | PrintFilePaths
             | WriteSources
+
+data Options =
+       Options
+         { optPrintDiffs     :: Bool
+         , optPrintSources   :: Bool
+         , optPrintFilePaths :: Bool
+         , optWriteSources   :: Bool
+         , optPaths          :: [FilePath]
+         }
 
 data InputFile = InputFilePath HaskellSourceFilePath
                | InputFromStdIn
