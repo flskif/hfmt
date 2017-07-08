@@ -5,14 +5,14 @@ module Language.Haskell.Format.Utilities
   ) where
 
 import           Language.Haskell.Format
-import           Language.Haskell.Format.Definitions
+import           Language.Haskell.Format.Types
 import           Language.Haskell.Source.Enumerator
 
 import           Control.Applicative
 import           Control.Monad
 import           Data.Monoid
 import           Pipes
-import qualified Pipes.Prelude                       as P
+import qualified Pipes.Prelude                      as P
 import           Test.HUnit
 
 type ErrorString = String
