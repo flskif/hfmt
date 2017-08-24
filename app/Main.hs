@@ -31,7 +31,7 @@ main = do
 runFormatter :: Formatter -> Options -> IO Bool
 runFormatter formatter options =
   anyStrict
-    sourceChangedOrHasSuggestions
+    (sourceChangedOrHasSuggestions options)
     (inputFiles >-> P.map reformat >-> P.mapM writeOutput)
   where
     anyStrict :: Monad m => (a -> Bool) -> Producer a m () -> m Bool
@@ -67,7 +67,10 @@ readSource path = HaskellSource <$> readFile path
 readStdin :: IO HaskellSource
 readStdin = HaskellSource <$> getContents
 
-sourceChangedOrHasSuggestions :: ReformatResult -> Bool
-sourceChangedOrHasSuggestions (Reformat input source reformatted) =
-  not (null (suggestions reformatted)) ||
-  source /= reformattedSource reformatted
+sourceChangedOrHasSuggestions :: Options -> ReformatResult -> Bool
+sourceChangedOrHasSuggestions options (Reformat input source reformatted) =
+  case (Options.optAction options) of
+    PrintSources -> False
+    _ ->
+      not (null (suggestions reformatted)) ||
+      source /= reformattedSource reformatted
